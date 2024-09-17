@@ -1,13 +1,15 @@
 version: '3'
 services:
-   redis:
-     image: "redis:alpine"
-     ports:
+  redis:
+    image: "redis:alpine"
+    ports:
       - "6379:6379"
 
-   web:
-     build: '.'
-     ports: 
+  web:
+    build: '.'
+    ports: 
       - "5000:5000"
-     depends_on:
+    volumes: 
+      - .:/code
+    depends_on:
       - redis
